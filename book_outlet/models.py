@@ -10,6 +10,12 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self):
+        return self.full_name()
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50)
@@ -30,5 +36,5 @@ class Book(models.Model):
     #     self.slug = slugify(self.title)
     #     super().save(*args, **kwargs)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.title} ({self.rating})"
